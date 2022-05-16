@@ -30,6 +30,6 @@
 	</select>
 	
 	<select id="selectBoardList" resultType="boardVO">
-		select * from tb_board
+		select * from tb_board order by board_no desc
 	</select>
 </mapper>

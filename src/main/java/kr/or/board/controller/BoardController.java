@@ -1,9 +1,12 @@
 package kr.or.board.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,14 +28,25 @@ public class BoardController {
 	}
 	
 	@PostMapping("/write")
-	public String postWrite(BoardVO boardVO, Model model) {
+	public String postWrite(@ModelAttribute("vo") BoardVO boardVO, Model model) {
 		log.info("ck : " + boardVO.toString());
-		boardService.insertBoard(boardVO);
-		return "list";
+		int result = boardService.insertBoard(boardVO);
+		if(result != 1) {
+			model.addAttribute("error", "write fail");
+		}
+		// forward방식이 아닌 redirect방식
+		// get방식의 /board/list 맵핑이 처리
+		// forward : url은 write지만 view는 list
+		// redirect : url도 같이 list로 전환ㄴ
+		return "redirect:list";
 	}
 	
 	@GetMapping("/list")
-	public String getList() {
+	public String getList(Model model) {
+		log.info("ck : " + "redirect list 이동");
+		List<BoardVO> boardList = boardService.selectBoardList();
+		
+		model.addAttribute("boardList", boardList);
 		return "list";
 	}
 }
