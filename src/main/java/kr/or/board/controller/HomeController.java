@@ -1,4 +1,4 @@
-package kr.or.board;
+package kr.or.board.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

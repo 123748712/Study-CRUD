@@ -1,9 +1,8 @@
 package kr.or.board.mapper;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -30,8 +29,47 @@ public class BoardMapperTest {
 	@Autowired
 	private BoardMapper boardMapper;
 	
+	@Test
+	@Disabled
+	public void selectTest() {
+		BoardVO boardVO = boardMapper.selectBoard(12);
+		
+		log.info("boardVO : " + boardVO.toString());
+		
+		Assertions.assertEquals(12, boardVO.getBoardNo());
+	}
 	
 	@Test
+	@Disabled
+	public void deleteTest() {
+		Assertions.assertEquals(1, boardMapper.deleteBoard(5));
+	}
+	
+	@Test
+	@Disabled
+	public void updateTest() {
+		BoardVO vo = new BoardVO();
+		vo.setBoardTitle("title수정");
+		vo.setBoardWriter("writer수정");
+		vo.setBoardContent("content수정");
+		vo.setBoardNo(5);
+		
+		Assertions.assertEquals(1, boardMapper.updateBoard(vo));
+	}
+	
+	@Test
+//	@Disabled
+	public void selectListTest() {
+		List<BoardVO> boardList = boardMapper.selectBoardList();
+		
+		boardList.stream().forEach(vo -> System.out.println(vo.toString()));
+		
+		Assertions.assertEquals(14, boardList.size());
+	}
+	
+	
+	@Test
+	@Disabled
 	@DisplayName("insertTest") // Junit 테스트 이름 지정
 	public void insertTest() { // insert 테스트
 		BoardVO vo;

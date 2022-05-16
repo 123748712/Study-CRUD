@@ -1,13 +1,12 @@
-package kr.or.board.mapper;
+package kr.or.board.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import kr.or.board.domain.BoardVO;
 
-@Mapper
-public interface BoardMapper {
+// Service vs Mapper(DAO)
+// Service는 Mapper가 실행한 구문의 return값을 if문을 이용해 체크한다. (Business Logic)
+public interface BoardService {
 
 	public int insertBoard(BoardVO vo);
 	public int updateBoard(BoardVO vo);

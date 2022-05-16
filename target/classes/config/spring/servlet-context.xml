@@ -25,6 +25,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	 
-	<context:component-scan base-package="kr.or.board" />
+	<context:component-scan base-package="kr.or.board.controller" />
+	<!-- servlet-context에선 base-package 주소에서만 controller를 scan 한다. -->
 	<task:annotation-driven/>
 </beans:beans>
