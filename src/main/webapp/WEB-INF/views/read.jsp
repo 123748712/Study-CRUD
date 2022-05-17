@@ -15,7 +15,7 @@
 	<!-- hidden으로 view에선 숨기고, form으로 데이터는 전송 -->
 	<input type="hidden" name="boardNo" value="${boardVO.boardNo}">
 	<input type="button" id="id_mod" value="수정">
-	<input type="submit" value="수정내용 전송" disabled>
+	<input type="button" id="id_modify" value="수정내용 전송" disabled>
 	<input type="submit" value="삭제" id="id_del">
 </form>
 <script>
@@ -51,6 +51,13 @@
 		c_form.submit();
 	}
 	c_form.addEventListener("submit", f_submit);
+	
+	const c_modify = document.querySelector("#id_modify");
+	const f_modifyClick = () => {
+		console.log(c_form.action);
+		c_form.submit();
+	}
+	c_modify.onclick = f_modifyClick;
 </script>
 </body>
 </html>

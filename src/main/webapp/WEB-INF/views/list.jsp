@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+const f_over = function(p_tr) {
+	p_tr.style.backgroundColor = "black";
+	p_tr.style.color = "yellow";
+}
+
+const f_out = function(p_tr) {
+	p_tr.style.backgroundColor = "white";
+	p_tr.style.color = "black";
+}
+</script>
 </head>
 <body>
 <h1>리스트</h1>
@@ -22,16 +33,5 @@
 </c:forEach>
 </table>
 <a href="${pageContext.request.contextPath}/board/write">글쓰기</a>
-<script>
-const f_over = function(p_tr) {
-	p_tr.style.backgroundColor = "black";
-	p_tr.style.color = "yellow";
-}
-
-const f_out = function(p_tr) {
-	p_tr.style.backgroundColor = "white";
-	p_tr.style.color = "black";
-}
-</script>
 </body>
 </html>
