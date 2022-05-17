@@ -24,7 +24,7 @@ public class BoardController {
 
 	@GetMapping("/write")
 	public String getWrite() {
-		return "board/write";
+		return "write";
 	}
 	
 	@PostMapping("/write")
@@ -47,23 +47,23 @@ public class BoardController {
 		List<BoardVO> boardList = boardService.selectBoardList();
 		
 		model.addAttribute("boardList", boardList);
-		return "board/list";
+		return "list";
 	}
-	
-	@GetMapping("/index")
-	public String goIndex() {
-		// forwarding => /WEB-INF/views/index.jsp를 응답
-		return "board/index";
-	}
-	
-	// 메뉴의 buttons 클릭시 이동할 페이지 매핑
-	@GetMapping("/buttons")
-	public String buttons() {
-		return "board/buttons";
-	}
-	
-	@GetMapping("/cards")
-	public String cards() {
-		return "board/cards";
-	}
+//	
+//	@GetMapping("/index")
+//	public String goIndex() {
+//		// forwarding => /WEB-INF/views/index.jsp를 응답
+//		return "board/index";
+//	}
+//	
+//	// 메뉴의 buttons 클릭시 이동할 페이지 매핑
+//	@GetMapping("/buttons")
+//	public String buttons() {
+//		return "board/buttons";
+//	}
+//	
+//	@GetMapping("/cards")
+//	public String cards() {
+//		return "board/cards";
+//	}
 }

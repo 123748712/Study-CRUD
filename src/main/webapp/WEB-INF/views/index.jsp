@@ -68,6 +68,7 @@
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="/board/board/buttons">Buttons</a>
                         <a class="collapse-item" href="/board/board/cards">Cards</a>
+                        
                     </div>
                 </div>
             </li>
