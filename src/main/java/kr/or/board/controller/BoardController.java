@@ -55,4 +55,15 @@ public class BoardController {
 		// forwarding => /WEB-INF/views/index.jsp를 응답
 		return "index";
 	}
+	
+	// 메뉴의 buttons 클릭시 이동할 페이지 매핑
+	@GetMapping("/buttons")
+	public String buttons() {
+		return "buttons";
+	}
+	
+	@GetMapping("/cards")
+	public String cards() {
+		return "cards";
+	}
 }
