@@ -37,7 +37,7 @@ public class BoardController {
 		// forward방식이 아닌 redirect방식
 		// get방식의 /board/list 맵핑이 처리
 		// forward : url은 write지만 view는 list
-		// redirect : url도 같이 list로 전환ㄴ
+		// redirect : url,view도 같이 list로 전환
 		return "redirect:list";
 	}
 	
@@ -48,5 +48,11 @@ public class BoardController {
 		
 		model.addAttribute("boardList", boardList);
 		return "list";
+	}
+	
+	@GetMapping("/index")
+	public String goIndex() {
+		// forwarding => /WEB-INF/views/index.jsp를 응답
+		return "index";
 	}
 }
