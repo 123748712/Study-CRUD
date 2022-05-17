@@ -12,15 +12,26 @@
 <table border="1">
 <tr><th>순번</th><th>번호</th><th>제목</th><th>작성자</th><th>날짜</th></tr>
 <c:forEach var="board" items="${boardList}" varStatus="status">
-	<tr>
+	<tr onmouseover="f_over(this)" onmouseout="f_out(this)">
 		<td>${status.index}</td>
 		<td>${board.boardNo}</td>
-		<td>${board.boardTitle}</td>
+		<td><a href="${pageContext.request.contextPath}/board/read?boardNo=${board.boardNo}">${board.boardTitle}</a></td>
 		<td>${board.boardWriter}</td>
 		<td><fmt:formatDate value="${board.boardRegdate}" pattern="yyyy-MM-dd"/></td>
-		
 	</tr>
 </c:forEach>
 </table>
+<a href="${pageContext.request.contextPath}/board/write">글쓰기</a>
+<script>
+const f_over = function(p_tr) {
+	p_tr.style.backgroundColor = "black";
+	p_tr.style.color = "yellow";
+}
+
+const f_out = function(p_tr) {
+	p_tr.style.backgroundColor = "white";
+	p_tr.style.color = "black";
+}
+</script>
 </body>
 </html>

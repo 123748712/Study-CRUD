@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.board.domain.BoardVO;
 import kr.or.board.service.BoardService;
@@ -49,6 +50,24 @@ public class BoardController {
 		model.addAttribute("boardList", boardList);
 		return "list";
 	}
+	
+	@GetMapping("/read")
+	public String getRead(Model model, @RequestParam("boardNo") int boardNo) { 
+									// boardNo가 int타입이기 때문에 int타입으로 매핑이 된다. 사용하지 않는다면 String 타입으로 받아온다.
+		log.info("상세페이지 접근 확인");
+		model.addAttribute("boardVO", boardService.selectBoard(boardNo));
+		
+		return "read";
+	}
+	
+	@PostMapping("/modify")
+	public String postModify(BoardVO vo, Model model) {
+		
+		boardService.updateBoard(vo);
+		
+		return "redirect:/board/list";
+	}
+	// Bootstrap용 Mapping
 //	
 //	@GetMapping("/index")
 //	public String goIndex() {
