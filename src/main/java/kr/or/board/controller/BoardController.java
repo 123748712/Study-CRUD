@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.board.domain.BoardVO;
 import kr.or.board.service.BoardService;
@@ -61,17 +62,18 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
-	public String postModify(BoardVO vo, Model model) {
-		
+	public String postModify(BoardVO vo, Model model, RedirectAttributes rattr) {
+		// 일회성 메세지를 담는 객체
+		rattr.addFlashAttribute("onetimemsg", "수정 성공");
 		boardService.updateBoard(vo);
 		
 		return "redirect:/board/list";
 	}
 	
 	@PostMapping("/delete")
-	public String postDelete(BoardVO vo, Model model) {
+	public String postDelete(BoardVO vo, Model model, RedirectAttributes rattr) {
 		boardService.deleteBoard(vo.getBoardNo());
-		
+		rattr.addFlashAttribute("onetimemsg", "삭제 성공");
 		return "redirect:/board/list";
 	}
 	// Bootstrap용 Mapping

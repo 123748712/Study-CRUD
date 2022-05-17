@@ -16,6 +16,12 @@ const f_out = function(p_tr) {
 	p_tr.style.backgroundColor = "white";
 	p_tr.style.color = "black";
 }
+
+let resultMsg = "${onetimemsg}";
+
+if(resultMsg) {
+	alert(resultMsg);
+}
 </script>
 </head>
 <body>
