@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>${boardVO.boardNo}번 상세내용</h1>
-<form action="${pageContext.request.contextPath}/board/modify" method="post">
+<form id="id_form" action="${pageContext.request.contextPath}/board/modify" method="post" >
 	제목 <input type="text" name="boardTitle" value="${boardVO.boardTitle}" readonly> <br>
 	작성자 <input type="text" name="boardWriter" value="${boardVO.boardWriter}" readonly> <br>
 	내용 <br>
@@ -16,7 +16,7 @@
 	<input type="hidden" name="boardNo" value="${boardVO.boardNo}">
 	<input type="button" id="id_mod" value="수정">
 	<input type="submit" value="수정내용 전송" disabled>
-	<input type="submit" value="삭제">
+	<input type="submit" value="삭제" id="id_del">
 </form>
 <script>
 	const c_mod = document.querySelector("#id_mod");
@@ -30,8 +30,27 @@
 			l_elements[i].disabled = false;
 		}
 	}
-	
 	c_mod.onclick = f_modClick;
+	
+// 	const c_del = document.querySelector("#id_del");
+// 	const f_delClick = () => {
+// 		event.preventDefault();
+		
+// 		let l_form = document.forms[0];
+// 		l_form.action = "${pageContext.request.contextPath}/board/delete";
+		
+// 		l_form.submit();
+// 	}
+	
+// 	c_del.onclick = f_delClick;
+
+	const c_form = document.querySelector("#id_form");
+	const f_submit = () => {
+		event.preventDefault();
+		c_form.action = "${pageContext.request.contextPath}/board/delete";
+		c_form.submit();
+	}
+	c_form.addEventListener("submit", f_submit);
 </script>
 </body>
 </html>

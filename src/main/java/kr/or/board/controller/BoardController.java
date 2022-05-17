@@ -67,6 +67,13 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
+	
+	@PostMapping("/delete")
+	public String postDelete(BoardVO vo, Model model) {
+		boardService.deleteBoard(vo.getBoardNo());
+		
+		return "redirect:/board/list";
+	}
 	// Bootstrap용 Mapping
 //	
 //	@GetMapping("/index")
