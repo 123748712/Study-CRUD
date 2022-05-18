@@ -52,12 +52,26 @@ if(resultMsg) {
 <p>현재페이지 : ${curPage}</p>
 <c:forEach var="pageNum" begin="${pageDTO.startPage}" end="${pageDTO.endPage}" step="1">
 	<c:if test="${pageNum == curPage}"> <!-- 사용자가 선택한 페이지와 현재페이지가 같을때 -->
-	<a href="${contextPath}/list?pageNum=${pageNum}&pageSize=${pageSize}" class="active">${pageNum}</a>&nbsp;&nbsp;
+	<a href="#" class="active" onclick="f_sendPage('${pageNum}', '${pageSize}')">${pageNum}</a>&nbsp;&nbsp;
 	</c:if>
 	<c:if test="${pageNum != curPage}"> <!-- 사용자가 선택한 페이지와 현재페이지가 다를때 -->
-	<a href="${contextPath}/list?pageNum=${pageNum}&pageSize=${pageSize}">${pageNum}</a>&nbsp;&nbsp;
+	<a href="#" onclick="f_sendPage('${pageNum}', '${pageSize}')">${pageNum}</a>&nbsp;&nbsp;
 	</c:if>
 </c:forEach>
 <a href="${pageContext.request.contextPath}/board/write">글쓰기</a>
+<form action="${contextPath}/list" id="id_pageForm">
+	<input type="hidden" name="pageNum" value="${pageNum}">
+	<input type="hidden" name="pageSize" value="${pageSize}">
+</form>
+<script>
+const pageForm = document.querySelector("#id_pageForm");
+const f_sendPage = (pageNum, pageSize) => { // 매개변수 담기
+	event.preventDefault(); // a태그의 link기능 막기
+	// 매개변수 값을 input의 값에 넣어주기
+	document.querySelector("input[name=pageNum]").value = pageNum;
+	document.querySelector("input[name=pageSize]").value = pageSize;
+	pageForm.submit(); // form 전송
+}
+</script>
 </body>
 </html>
