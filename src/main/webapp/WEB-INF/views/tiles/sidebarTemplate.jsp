@@ -1,2 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div id="footer">footer영역</div>
+<div>
+<h1>sidebar</h1>
+</div>
