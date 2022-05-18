@@ -54,7 +54,7 @@ public class BoardController {
 		List<BoardVO> boardList = boardService.selectBoardPage(pageCondDTO);
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("pageDTO", pageDTO);
-		return "list";
+		return "umm/list";
 	}
 	
 	@GetMapping("/read")
@@ -81,26 +81,4 @@ public class BoardController {
 		rattr.addFlashAttribute("onetimemsg", "삭제 성공");
 		return "redirect:/board/list";
 	}
-	
-	
-	
-	
-	// Bootstrap용 Mapping
-//	
-//	@GetMapping("/index")
-//	public String goIndex() {
-//		// forwarding => /WEB-INF/views/index.jsp를 응답
-//		return "board/index";
-//	}
-//	
-//	// 메뉴의 buttons 클릭시 이동할 페이지 매핑
-//	@GetMapping("/buttons")
-//	public String buttons() {
-//		return "board/buttons";
-//	}
-//	
-//	@GetMapping("/cards")
-//	public String cards() {
-//		return "board/cards";
-//	}
 }
