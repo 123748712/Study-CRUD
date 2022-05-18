@@ -15,4 +15,5 @@ public interface BoardService {
 	public BoardVO selectBoard(int boardNo);
 	public List<BoardVO> selectBoardList();
 	public List<BoardVO> selectBoardPage(PageCondDTO pageCondDTO);
+	public int selectBoardTotalCnt();
 }

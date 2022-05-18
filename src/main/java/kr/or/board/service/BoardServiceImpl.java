@@ -44,4 +44,9 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> selectBoardPage(PageCondDTO pageCondDTO) {
 		return boardMapper.selectBoardPage(pageCondDTO);
 	}
+
+	@Override
+	public int selectBoardTotalCnt() {
+		return boardMapper.selectBoardTotalCnt();
+	}
 }

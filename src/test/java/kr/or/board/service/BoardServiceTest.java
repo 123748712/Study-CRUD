@@ -33,7 +33,7 @@ public class BoardServiceTest {
 	@Test
 	public void selectPage() {
 //		PageCondDTO pageCondDTO = new PageCondDTO(); // Default 생성자를 통해 (1,5)값을 할당해줌
-		PageCondDTO pageCondDTO = new PageCondDTO(2,7); // 따로 값을 넣어줘도 가능
+		PageCondDTO pageCondDTO = new PageCondDTO(2,7,5); // 따로 값을 넣어줘도 가능
 //		pageCondDTO.setPageNum(2);
 //		pageCondDTO.setPageSize(5);
 		// 5개의 boardVO를 한페이지로 지정해서 1page 가져오기.

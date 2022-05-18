@@ -73,7 +73,7 @@ public class BoardMapperTest {
 	@DisplayName("insertTest") // Junit 테스트 이름 지정
 	public void insertTest() { // insert 테스트
 		BoardVO vo;
-		for(int i = 518; i <=(518+108); i++) {
+		for(int i = 700; i <=799; i++) {
 			vo = new BoardVO(); // test용 BoardVO
 			vo.setBoardTitle("title" + i);
 			vo.setBoardWriter("writer" + i);

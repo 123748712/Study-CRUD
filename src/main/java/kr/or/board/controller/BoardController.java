@@ -49,7 +49,7 @@ public class BoardController {
 	public String getList(Model model, PageCondDTO pageCondDTO) {
 		log.info("ck : " + "redirect list 이동");
 //		List<BoardVO> boardList = boardService.selectBoardList();
-		PageDTO pageDTO = new PageDTO(pageCondDTO, 121);
+		PageDTO pageDTO = new PageDTO(pageCondDTO, boardService.selectBoardTotalCnt());
 		
 		List<BoardVO> boardList = boardService.selectBoardPage(pageCondDTO);
 		model.addAttribute("boardList", boardList);
