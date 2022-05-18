@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.active {
+		color: red;
+		font-size: 2em;
+	}
+</style>
 <script>
 const f_over = function(p_tr) {
 	p_tr.style.backgroundColor = "black";
@@ -26,6 +32,7 @@ if(resultMsg) {
 </head>
 <body>
 <h1>리스트</h1>
+<p>${pageDTO.toString()}</p>
 <table border="1">
 <tr><th>순번</th><th>번호</th><th>제목</th><th>작성자</th><th>날짜</th></tr>
 <c:forEach var="board" items="${boardList}" varStatus="status">
@@ -38,6 +45,19 @@ if(resultMsg) {
 	</tr>
 </c:forEach>
 </table>
+<!-- 페이지 바운더리 출력 -->
+<c:set var="curPage" value="${pageDTO.pageCondDTO.pageNum}" />
+<c:set var="pageSize" value="${pageDTO.pageCondDTO.pageSize}" />
+<c:set var="contextPath" value="${pageContext.request.contextPath}/board"></c:set>
+<p>현재페이지 : ${curPage}</p>
+<c:forEach var="pageNum" begin="${pageDTO.startPage}" end="${pageDTO.endPage}" step="1">
+	<c:if test="${pageNum == curPage}"> <!-- 사용자가 선택한 페이지와 현재페이지가 같을때 -->
+	<a href="${contextPath}/list?pageNum=${pageNum}&pageSize=${pageSize}" class="active">${pageNum}</a>&nbsp;&nbsp;
+	</c:if>
+	<c:if test="${pageNum != curPage}"> <!-- 사용자가 선택한 페이지와 현재페이지가 다를때 -->
+	<a href="${contextPath}/list?pageNum=${pageNum}&pageSize=${pageSize}">${pageNum}</a>&nbsp;&nbsp;
+	</c:if>
+</c:forEach>
 <a href="${pageContext.request.contextPath}/board/write">글쓰기</a>
 </body>
 </html>

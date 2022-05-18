@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.board.domain.BoardVO;
+import kr.or.board.domain.PageCondDTO;
 import kr.or.board.mapper.BoardMapper;
 
 @Service
@@ -37,5 +38,10 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> selectBoardList() {
 		return boardMapper.selectBoardList();
+	}
+
+	@Override
+	public List<BoardVO> selectBoardPage(PageCondDTO pageCondDTO) {
+		return boardMapper.selectBoardPage(pageCondDTO);
 	}
 }

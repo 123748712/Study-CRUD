@@ -8,5 +8,6 @@
 
 	<typeAliases>
 		<typeAlias type="kr.or.board.domain.BoardVO" alias="boardVO"/>
+		<typeAlias type="kr.or.board.domain.PageCondDTO" alias="pagecondDTO"/>
 	</typeAliases>
 </configuration>

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.board.domain.BoardVO;
+import kr.or.board.domain.PageCondDTO;
+import kr.or.board.domain.PageDTO;
 import kr.or.board.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,11 +46,14 @@ public class BoardController {
 	}
 	
 	@GetMapping("/list")
-	public String getList(Model model) {
+	public String getList(Model model, PageCondDTO pageCondDTO) {
 		log.info("ck : " + "redirect list 이동");
-		List<BoardVO> boardList = boardService.selectBoardList();
+//		List<BoardVO> boardList = boardService.selectBoardList();
+		PageDTO pageDTO = new PageDTO(pageCondDTO, 121);
 		
+		List<BoardVO> boardList = boardService.selectBoardPage(pageCondDTO);
 		model.addAttribute("boardList", boardList);
+		model.addAttribute("pageDTO", pageDTO);
 		return "list";
 	}
 	
@@ -76,6 +81,10 @@ public class BoardController {
 		rattr.addFlashAttribute("onetimemsg", "삭제 성공");
 		return "redirect:/board/list";
 	}
+	
+	
+	
+	
 	// Bootstrap용 Mapping
 //	
 //	@GetMapping("/index")
