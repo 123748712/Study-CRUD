@@ -9,5 +9,6 @@
 	<typeAliases>
 		<typeAlias type="kr.or.board.domain.BoardVO" alias="boardVO"/>
 		<typeAlias type="kr.or.board.domain.PageCondDTO" alias="pagecondDTO"/>
+		<typeAlias type="kr.or.board.domain.ReplyVO" alias="replyVO"/>
 	</typeAliases>
 </configuration>

@@ -69,7 +69,7 @@ public class BoardMapperTest {
 	
 	
 	@Test
-//	@Disabled
+	@Disabled	
 	@DisplayName("insertTest") // Junit 테스트 이름 지정
 	public void insertTest() { // insert 테스트
 		BoardVO vo;
