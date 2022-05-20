@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,7 +27,16 @@ public class ReplyController {
 	@ResponseBody
 	public List<ReplyVO> getReplyList(@RequestParam("boardNo") int boardNo) {
 		
-		log.info("ck : " + boardNo);
+		log.info("ck get : " + boardNo);
+		
+		return replyService.selectReplyList2(boardNo);
+	}
+
+	@PostMapping(value = "/list", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public List<ReplyVO> postReplyList(@RequestParam("boardNo") int boardNo) {
+		
+		log.info("ck post : " + boardNo);
 		
 		return replyService.selectReplyList2(boardNo);
 	}

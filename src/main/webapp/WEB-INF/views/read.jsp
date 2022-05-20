@@ -75,7 +75,8 @@
 	
 	// AJAX로 replyList 불러오기
 	const xhr = new XMLHttpRequest();
-	xhr.open("get", "${replyPath}?boardNo=${boardVO.boardNo}", true);
+// 	xhr.open("get", "${replyPath}?boardNo=${boardVO.boardNo}", true);
+	xhr.open("post", "${replyPath}", true);
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4 & xhr.status == 200) {
 // 			console.log(JSON.parse(xhr.responseText));
@@ -97,7 +98,11 @@
 			}
 		}
 	}
-	xhr.send();
+// 	xhr.send();
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // post방식으로 보낼때 requestHeader를 세팅해주어야 한다.
+	// jQuery AJAX는 RequestHeader가 default여서 설정해주지 않아도 된다.
+	// contentType:false, processData:false 세팅이 추가적으로 필요
+	xhr.send("boardNo=${boardVO.boardNo}"); // post방식으로 보낼때 send 안에 보낼 데이터를 넣어준다.
 	
 </script>
 </body>
