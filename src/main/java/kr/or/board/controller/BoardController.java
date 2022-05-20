@@ -54,7 +54,7 @@ public class BoardController {
 		List<BoardVO> boardList = boardService.selectBoardPage(pageCondDTO);
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("pageDTO", pageDTO);
-		return "umm/list";
+		return "list";
 	}
 	
 	@GetMapping("/read")
