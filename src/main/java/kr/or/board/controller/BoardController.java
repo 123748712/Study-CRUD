@@ -2,9 +2,12 @@ package kr.or.board.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,13 +31,19 @@ public class BoardController {
 
 	@GetMapping("/write")
 	public String getWrite() {
-		return "write";
+		return "write2";
 	}
 	
 	@PostMapping("/write")
-	public String postWrite(@ModelAttribute("vo") BoardVO boardVO, Model model) {
+	public String postWrite(@ModelAttribute("vo") @Valid BoardVO boardVO, Errors errors, Model model) {
 		log.info("ck : " + boardVO.toString());
+
+		if(errors.hasErrors()) { // validation 에러가 있다면
+			return "write2"; 	 // 다시 write 로 돌아감
+		}
+		
 		int result = boardService.insertBoard(boardVO);
+
 		if(result != 1) {
 			model.addAttribute("error", "write fail");
 		}

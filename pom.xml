@@ -62,7 +62,7 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
@@ -85,6 +85,13 @@
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-extras</artifactId>
 			<version>${org.apache.tiles-version}</version>
+		</dependency>
+
+		<!--validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.2.3.Final</version>
 		</dependency>
 
 		<!--데이터 베이스 관련 -->
