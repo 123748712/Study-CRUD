@@ -14,13 +14,13 @@ import lombok.ToString;
 public class BoardVO {
 	private int boardNo;
 	
-	@NotEmpty
+	@NotEmpty(message = "제목 미작성")
 	private String boardTitle;
 	
-	@NotEmpty
+	@NotEmpty(message = "작성자 미작성")
 	private String boardWriter;
 	
-	@NotEmpty
+	@NotEmpty(message = "내용 미작성")
 	private String boardContent;
 	
 	private Date boardRegdate;

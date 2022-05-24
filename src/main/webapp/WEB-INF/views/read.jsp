@@ -204,7 +204,7 @@
 				}
 			}
 			xhr1.setRequestHeader('Content-Type', 'application/json');
-			xhr1.send(replyNo); // del 버튼 눌렀을대 값 var로 저장해서 넘겨야함
+			xhr1.send(replyNo);// del 버튼 눌렀을대 값 var로 저장해서 넘겨야함
 		}
 
 	const replyBtn = document.querySelector("#id_btn");

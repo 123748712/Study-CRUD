@@ -31,14 +31,14 @@ public class BoardController {
 
 	@GetMapping("/write")
 	public String getWrite() {
-		return "write2";
+		return "write";
 	}
 	
 	@PostMapping("/write")
 	public String postWrite(@ModelAttribute("vo") @Valid BoardVO boardVO, Errors errors, Model model) {
-		log.info("ck : " + boardVO.toString());
-
-		if(errors.hasErrors()) { // validation 에러가 있다면
+		log.info("ck : " + boardVO.toString());   // 검증하고 싶은 데이터가 있다면 변수타입 앞에 @Valid 어노테이션 기입
+												  // 검증 결과를 Errors 객체에 담아준다.
+		if(errors.hasErrors()) { // validation 에러가 있다면 (즉, Errors 객체에 에러가 담겼다면)
 			return "write2"; 	 // 다시 write 로 돌아감
 		}
 		
