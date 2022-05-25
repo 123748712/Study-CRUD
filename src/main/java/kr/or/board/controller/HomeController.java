@@ -41,7 +41,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("msg", msg);
-		return "home";
+		return "home2";
 	}
 	
 }

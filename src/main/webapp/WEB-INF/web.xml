@@ -30,7 +30,19 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
+	
+	<!-- form태그 put, delete 지원 filter -->	
+	<filter>
+		<filter-name>httpFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.HiddenHttpMethodFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>httpFilter</filter-name>
+		<servlet-name>appServlet</servlet-name>
+	</filter-mapping>
+	
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
